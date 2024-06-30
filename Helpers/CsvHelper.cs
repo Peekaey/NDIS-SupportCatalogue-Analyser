@@ -113,7 +113,6 @@ public class CsvHelper: ICsvHelper
                     csv.WriteField(supportItem.Price);
                     csv.WriteField(supportItem.PriceControl);
                     csv.WriteField(supportItem.SupportCategories);
-                    csv.WriteField(supportItem.SupportPurpose);
                     csv.WriteField(supportItem.OutcomeDomain);
                     csv.NextRecord();
                 }

@@ -698,25 +698,53 @@ public class PricelistAnalysisService : IPricelistAnalysisService
     {
         foreach (var item in pricelistAnalysisCatalog.SupportItemsWithPriceDecrease)
         {
-            var actPercentage =
-                pricelistAnalysisCatalog.CalculatePriceDecreasePercentage(decimal.Parse(item.OldActPrice),
-                    decimal.Parse(item.NewActPrice));
-            item.ActPercentage = actPercentage.ToString(CultureInfo.CurrentCulture);
+            if (item.NewActPrice != null && item.OldActPrice != null)
+            {
+                var actPercentage =
+                    pricelistAnalysisCatalog.CalculatePriceDecreasePercentage(decimal.Parse(item.OldActPrice),
+                        decimal.Parse(item.NewActPrice));
+                item.ActPercentage = actPercentage.ToString(CultureInfo.CurrentCulture);
+            }
+            else
+            {
+                item.ActPercentage = "Error, Double Check Manually";
+            }
 
-            var ntPercentage = pricelistAnalysisCatalog.CalculatePriceDecreasePercentage(
-                decimal.Parse(item.OldNtPrice),
-                decimal.Parse(item.NewNtPrice));
-            item.NtPercentage = ntPercentage.ToString(CultureInfo.CurrentCulture);
+            if (item.NewNtPrice != null && item.OldNtPrice != null)
+            {
+                var ntPercentage = pricelistAnalysisCatalog.CalculatePriceDecreasePercentage(
+                    decimal.Parse(item.OldNtPrice),
+                    decimal.Parse(item.NewNtPrice));
+                item.NtPercentage = ntPercentage.ToString(CultureInfo.CurrentCulture);
+            }
+            else
+            {
+                item.NtPercentage = "Error, Double Check Manually";
+            }
 
-            var remotePercentage = pricelistAnalysisCatalog.CalculatePriceDecreasePercentage(
-                decimal.Parse(item.OldRemotePrice),
-                decimal.Parse(item.NewRemotePrice));
-            item.RemotePercentage = remotePercentage.ToString(CultureInfo.CurrentCulture);
-            
-            var veryRemotePercentage = pricelistAnalysisCatalog.CalculatePriceDecreasePercentage(
-                decimal.Parse(item.OldVeryRemotePrice),
-                decimal.Parse(item.NewVeryRemotePrice));
-            item.VeryRemotePercentage = veryRemotePercentage.ToString(CultureInfo.CurrentCulture);
+            if (item.NewRemotePrice != null && item.OldRemotePrice != null)
+            {
+                var remotePercentage = pricelistAnalysisCatalog.CalculatePriceDecreasePercentage(
+                    decimal.Parse(item.OldRemotePrice),
+                    decimal.Parse(item.NewRemotePrice));
+                item.RemotePercentage = remotePercentage.ToString(CultureInfo.CurrentCulture);
+            }
+            else
+            {
+                item.RemotePercentage = "Error, Double Check Manually";
+            }
+
+            if (item.NewVeryRemotePrice != null && item.OldVeryRemotePrice != null)
+            {
+                var veryRemotePercentage = pricelistAnalysisCatalog.CalculatePriceDecreasePercentage(
+                    decimal.Parse(item.OldVeryRemotePrice),
+                    decimal.Parse(item.NewVeryRemotePrice));
+                item.VeryRemotePercentage = veryRemotePercentage.ToString(CultureInfo.CurrentCulture);
+            }
+            else
+            {
+                item.VeryRemotePercentage = "Error, Double Check Manually";
+            }
         }
 
         return pricelistAnalysisCatalog;

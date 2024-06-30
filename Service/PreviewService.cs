@@ -184,29 +184,64 @@ public class PreviewService: IPreviewService
         {
             foreach (var item in pricelistAnalysisCatalog.SupportItemsWithPriceDecrease)
             {
-                var actDecrease = pricelistAnalysisCatalog.CalculatePriceDecreasePercentage(
-                    decimal.Parse(item.OldActPrice),
-                    decimal.Parse(item.NewActPrice));
+                var actDecreaseString = "";
+                if (item.NewActPrice != null && item.OldActPrice != null)
+                {
+                    var actDecrease = pricelistAnalysisCatalog.CalculatePriceDecreasePercentage(
+                        decimal.Parse(item.OldActPrice),
+                        decimal.Parse(item.NewActPrice));
+                    actDecreaseString = actDecrease.ToString(CultureInfo.CurrentCulture);
+                }
+                else
+                {
+                    actDecreaseString = "Error, Double Check Manually";
+                }
 
-                var ntDecrease = pricelistAnalysisCatalog.CalculatePriceDecreasePercentage(
-                    decimal.Parse(item.OldNtPrice),
-                    decimal.Parse(item.NewNtPrice));
+                var ntDecreaseString = "";
+                if (item.NewNtPrice != null && item.OldNtPrice != null)
+                {
+                    var ntDecrease = pricelistAnalysisCatalog.CalculatePriceDecreasePercentage(
+                        decimal.Parse(item.OldNtPrice),
+                        decimal.Parse(item.NewNtPrice));
+                    ntDecreaseString = ntDecrease.ToString(CultureInfo.CurrentCulture);
+                }
+                else
+                {
+                    ntDecreaseString = "Error, Double Check Manually";
+                }
 
-                var remoteDecrease = pricelistAnalysisCatalog.CalculatePriceDecreasePercentage(
-                    decimal.Parse(item.OldRemotePrice),
-                    decimal.Parse(item.NewRemotePrice));
-
-                var veryRemoteDecrease = pricelistAnalysisCatalog.CalculatePriceDecreasePercentage(
-                    decimal.Parse(item.OldVeryRemotePrice),
-                    decimal.Parse(item.NewVeryRemotePrice));
-
+                var remoteDecreaseString = "";
+                if (item.NewRemotePrice != null && item.OldRemotePrice != null)
+                {
+                    var remoteDecrease = pricelistAnalysisCatalog.CalculatePriceDecreasePercentage(
+                        decimal.Parse(item.OldRemotePrice),
+                        decimal.Parse(item.NewRemotePrice));
+                    remoteDecreaseString = remoteDecrease.ToString(CultureInfo.CurrentCulture);
+                }
+                else
+                {
+                    remoteDecreaseString = "Error, Double Check Manually";
+                }
+                
+                var veryRemoteDecreaseString = "";
+                if (item.NewVeryRemotePrice != null && item.OldVeryRemotePrice != null)
+                {
+                     var veryRemoteDecrease = pricelistAnalysisCatalog.CalculatePriceDecreasePercentage(
+                        decimal.Parse(item.OldVeryRemotePrice),
+                        decimal.Parse(item.NewVeryRemotePrice));
+                     veryRemoteDecreaseString = veryRemoteDecrease.ToString(CultureInfo.CurrentCulture);
+                }
+                else
+                {
+                    veryRemoteDecreaseString = "Error, Double Check Manually";
+                }
 
                 priceDecreaseTable.AddRow(index.ToString(),
                     item.SupportItemNumber,
-                    actDecrease.ToString(CultureInfo.CurrentCulture),
-                    ntDecrease.ToString(CultureInfo.CurrentCulture),
-                    remoteDecrease.ToString(CultureInfo.CurrentCulture),
-                    veryRemoteDecrease.ToString(CultureInfo.CurrentCulture));
+                    actDecreaseString,
+                    ntDecreaseString,
+                    remoteDecreaseString,
+                    veryRemoteDecreaseString);
                 index++;
             }
         }
