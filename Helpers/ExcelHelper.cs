@@ -281,10 +281,10 @@ public class ExcelHelper: IExcelHelper
 
                 IXLWorksheet worksheet13 = workbook.Worksheets.Add("Diff Cat Num and Nam Changes");
                 worksheet13.Cell(1, 1).Value = "Support Item Number";
-                worksheet13.Cell(1, 2).Value = "Pace Support Category Name";
-                worksheet13.Cell(1, 3).Value = "Proda Support Category Name";
-                worksheet13.Cell(1, 4).Value = "Pace Support Category Number";
-                worksheet13.Cell(1, 5).Value = "Proda Support Category Number";
+                worksheet13.Cell(1, 2).Value = "Pace Support Category Number";
+                worksheet13.Cell(1, 3).Value = "Proda Support Category Number";
+                worksheet13.Cell(1, 4).Value = "Pace Support Category Name";
+                worksheet13.Cell(1, 5).Value = "Proda Support Category Name";
                 if (exportAnalysisChanges.DifferentSupportCategoryNumberOrNames.Count > 0)
                 {
                     for (var i = 0; i < exportAnalysisChanges.DifferentSupportCategoryNumberOrNames.Count; i++)

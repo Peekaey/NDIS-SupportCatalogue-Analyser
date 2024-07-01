@@ -42,7 +42,7 @@ public class CsvHelper: ICsvHelper
                 csv.WriteField("Price");
                 csv.WriteField("Price Control");
                 csv.WriteField("Support Categories");
-                csv.WriteField("Support Purpose");
+                csv.WriteField("Outcome Domain");
                 csv.NextRecord();
 
                 foreach (var supportItem in pricelist.PricelistSupportItems)
@@ -56,7 +56,7 @@ public class CsvHelper: ICsvHelper
                     csv.WriteField(supportItem.Price);
                     csv.WriteField(supportItem.PriceControl);
                     csv.WriteField(supportItem.SupportCategories);
-                    csv.WriteField(supportItem.SupportPurpose);
+                    csv.WriteField(supportItem.OutcomeDomain);
                     csv.NextRecord();
                 }
             }

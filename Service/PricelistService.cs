@@ -119,7 +119,7 @@ public class PricelistService: IPricelistService
     {
         var outcomeDomain = "";
         
-        supportItem = supportItem.Replace("_", "");
+        // supportItem = supportItem.Replace("_", "");
         var thirdLastCharacter = supportItem[supportItem.Length - 3];
 
         if (thirdLastCharacter.ToString() == "T" || thirdLastCharacter.ToString() == "D")
